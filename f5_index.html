@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>shiftF5 – PowerPoint Design</title>
+  <meta name="color-scheme" content="light only">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      color-scheme: light only;
+      --bg:       #ffffff;
+      --bg2:      #f5f5f7;
+      --bg3:      #faf4f0;
+      --text:     #1d1d1f;
+      --mid:      #6e6e73;
+      --light:    #a1a1a6;
+      --accent:   #e8622a;
+      --accent-h: #d4531e;
+      --border:   #d2d2d7;
+      --radius:   18px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-weight: 400;
+      line-height: 1.6;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 0 2.5rem; height: 52px;
+      background: rgba(255,255,255,0.82);
+      backdrop-filter: saturate(180%) blur(20px);
+      -webkit-backdrop-filter: saturate(180%) blur(20px);
+      border-bottom: 1px solid rgba(0,0,0,0.07);
+    }
+    .logo { font-size: 1.05rem; font-weight: 600; letter-spacing: -0.01em; color: var(--text); }
+    .nav-links { display: flex; gap: 2rem; align-items: center; }
+    nav a { color: var(--mid); text-decoration: none; font-size: 0.82rem; font-weight: 400; transition: color 0.2s; }
+    nav a:hover { color: var(--text); }
+    .nav-cta {
+      background: var(--accent) !important; color: #fff !important;
+      padding: 0.45rem 1.1rem; border-radius: 980px; font-weight: 500 !important;
+      transition: background 0.2s !important;
+    }
+    .nav-cta:hover { background: var(--accent-h) !important; }
+
+    /* HERO */
+    #hero {
+      padding: 148px 2rem 110px;
+      text-align: center; max-width: 900px; margin: 0 auto;
+    }
+    .eyebrow {
+      font-size: 0.78rem; font-weight: 500; letter-spacing: 0.07em;
+      text-transform: uppercase; color: var(--accent); margin-bottom: 1.1rem;
+      opacity: 0; animation: fadeUp 0.7s 0.1s cubic-bezier(.22,.6,.36,1) forwards;
+    }
+    h1 {
+      font-size: clamp(2.6rem, 6.5vw, 5.2rem); font-weight: 600;
+      line-height: 1.06; letter-spacing: -0.035em; color: var(--text);
+      opacity: 0; animation: fadeUp 0.7s 0.2s cubic-bezier(.22,.6,.36,1) forwards;
+    }
+    h1 .soft { color: var(--mid); font-weight: 300; }
+    .hero-sub {
+      margin: 1.6rem auto 0; font-size: clamp(1rem, 2vw, 1.18rem);
+      color: var(--mid); max-width: 500px; font-weight: 300; line-height: 1.6;
+      opacity: 0; animation: fadeUp 0.7s 0.3s cubic-bezier(.22,.6,.36,1) forwards;
+    }
+    .hero-actions {
+      margin-top: 2.5rem; display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;
+      opacity: 0; animation: fadeUp 0.7s 0.4s cubic-bezier(.22,.6,.36,1) forwards;
+    }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: none; }
+    }
+
+    .btn-primary {
+      display: inline-flex; align-items: center;
+      background: var(--accent); color: #fff;
+      padding: 0.72rem 1.65rem; border-radius: 980px;
+      font-size: 0.9rem; font-weight: 500; text-decoration: none;
+      transition: background 0.2s;
+    }
+    .btn-primary:hover { background: var(--accent-h); }
+    .btn-ghost {
+      display: inline-flex; align-items: center; gap: 0.25rem;
+      color: var(--accent); font-size: 0.9rem; font-weight: 500;
+      text-decoration: none; padding: 0.72rem 0.2rem; transition: opacity 0.2s;
+    }
+    .btn-ghost:hover { opacity: 0.7; }
+    .btn-ghost::after { content: '›'; font-size: 1.15rem; line-height: 1; }
+
+    /* DIVIDER */
+    .divider { max-width: 980px; margin: 0 auto; height: 1px; background: var(--border); }
+
+    /* SECTIONS */
+    section { padding: 5.5rem 2rem; }
+    .section-inner { max-width: 980px; margin: 0 auto; }
+    .section-eyebrow {
+      font-size: 0.72rem; font-weight: 600; letter-spacing: 0.09em;
+      text-transform: uppercase; color: var(--light); margin-bottom: 0.8rem;
+    }
+    h2 {
+      font-size: clamp(1.9rem, 3.8vw, 3rem); font-weight: 600;
+      letter-spacing: -0.028em; line-height: 1.08; color: var(--text); max-width: 620px;
+    }
+    h2 .soft { color: var(--mid); font-weight: 300; }
+    .body-text {
+      font-size: 1rem; color: var(--mid); line-height: 1.72;
+      max-width: 520px; margin-top: 1.2rem; font-weight: 300;
+    }
+
+    /* PROBLEM */
+    #problem { background: var(--bg2); }
+    .tiles {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1px; margin-top: 3rem; background: var(--border);
+      border-radius: var(--radius); overflow: hidden; border: 1px solid var(--border);
+    }
+    .tile { background: var(--bg2); padding: 2rem 1.75rem; transition: background 0.2s; }
+    .tile:hover { background: #ebebed; }
+    .tile-marker { width: 28px; height: 3px; background: var(--accent); border-radius: 2px; margin-bottom: 1.1rem; }
+    .tile h3 { font-size: 0.95rem; font-weight: 600; letter-spacing: -0.01em; margin-bottom: 0.5rem; }
+    .tile p { font-size: 0.85rem; color: var(--mid); line-height: 1.65; font-weight: 300; }
+
+    /* LEISTUNGEN */
+    #leistungen { background: var(--bg); }
+    .leistungen-list { margin-top: 3rem; border-top: 1px solid var(--border); }
+    .leistung {
+      display: grid; grid-template-columns: 48px 1fr 24px;
+      align-items: start; gap: 1.5rem; padding: 2rem 0;
+      border-bottom: 1px solid var(--border); transition: opacity 0.2s; cursor: default;
+    }
+    .leistung:hover { opacity: 0.6; }
+    .leistung-num { font-size: 0.75rem; font-weight: 500; color: var(--light); padding-top: 0.25rem; }
+    .leistung h3 { font-size: 1.05rem; font-weight: 600; letter-spacing: -0.01em; margin-bottom: 0.45rem; }
+    .leistung p { font-size: 0.88rem; color: var(--mid); line-height: 1.68; font-weight: 300; max-width: 520px; }
+    .leistung-arrow { color: var(--light); font-size: 1rem; padding-top: 0.25rem; }
+
+    /* WARUM */
+    #warum { background: var(--bg3); }
+    .warum-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4.5rem; margin-top: 3rem; align-items: start; }
+    .check-list { list-style: none; display: flex; flex-direction: column; gap: 1.1rem; }
+    .check-list li { display: flex; gap: 0.8rem; font-size: 0.92rem; color: var(--mid); font-weight: 300; line-height: 1.55; }
+    .check-list li::before { content: '✓'; color: var(--accent); font-weight: 600; flex-shrink: 0; }
+    .quote-card {
+      background: var(--bg); border-radius: var(--radius); padding: 2rem;
+      border: 1px solid rgba(0,0,0,0.07); box-shadow: 0 2px 20px rgba(0,0,0,0.05);
+    }
+    .quote-card p { font-size: 0.97rem; line-height: 1.75; color: var(--text); font-weight: 300; }
+    .quote-card cite { display: block; margin-top: 1.25rem; font-style: normal; font-size: 0.78rem; color: var(--light); letter-spacing: 0.04em; }
+
+    /* KONTAKT */
+    #kontakt { background: var(--bg2); text-align: center; padding: 7rem 2rem; }
+    #kontakt h2 { margin: 0 auto; }
+    #kontakt .body-text { margin: 1.3rem auto 2.5rem; }
+    .kontakt-email {
+      display: inline-block; color: var(--accent);
+      font-size: clamp(1.15rem, 2.8vw, 1.7rem); font-weight: 500; text-decoration: none;
+      border-bottom: 1.5px solid rgba(232,98,42,0.3); padding-bottom: 0.15rem; transition: border-color 0.2s;
+    }
+    .kontakt-email:hover { border-color: var(--accent); }
+
+    /* PROJEKTE */
+    #projekte { background: var(--bg); }
+    .projekt-card {
+      margin-top: 2.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 2rem;
+      padding: 2rem 2rem;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: var(--bg2);
+      transition: background 0.2s;
+      flex-wrap: wrap;
+    }
+    .projekt-card:hover { background: #ebebed; }
+    .projekt-left {
+      display: flex;
+      gap: 1.25rem;
+      align-items: flex-start;
+      flex: 1;
+      min-width: 0;
+    }
+    .projekt-icon {
+      flex-shrink: 0;
+      width: 48px; height: 48px;
+      border-radius: 12px;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .projekt-icon svg { width: 28px; height: 28px; }
+    .projekt-name {
+      font-size: 1rem; font-weight: 600; letter-spacing: -0.01em;
+      margin-bottom: 0.2rem;
+    }
+    .projekt-claim {
+      font-size: 0.82rem; color: var(--accent); font-weight: 500;
+      margin-bottom: 0.6rem;
+    }
+    .projekt-desc {
+      font-size: 0.85rem; color: var(--mid); line-height: 1.65; font-weight: 300;
+      max-width: 520px;
+    }
+    .projekt-link {
+      display: inline-flex; align-items: center;
+      color: var(--accent); font-size: 0.88rem; font-weight: 500;
+      text-decoration: none; white-space: nowrap;
+      transition: opacity 0.2s;
+      flex-shrink: 0;
+    }
+    .projekt-link:hover { opacity: 0.7; }
+
+    /* FOOTER */
+    footer {
+      background: var(--bg2); border-top: 1px solid var(--border);
+      padding: 1.5rem 2.5rem; display: flex; justify-content: space-between;
+      align-items: center; font-size: 0.75rem; color: var(--light); flex-wrap: wrap; gap: 0.75rem;
+    }
+    footer a { color: var(--light); text-decoration: none; transition: color 0.2s; }
+    footer a:hover { color: var(--text); }
+
+    /* SCROLL REVEAL */
+    .fade-up {
+      opacity: 0; transform: translateY(28px);
+      transition: opacity 0.65s cubic-bezier(.22,.6,.36,1), transform 0.65s cubic-bezier(.22,.6,.36,1);
+    }
+    .fade-up.visible { opacity: 1; transform: none; }
+    .stagger > * {
+      opacity: 0; transform: translateY(22px);
+      transition: opacity 0.55s cubic-bezier(.22,.6,.36,1), transform 0.55s cubic-bezier(.22,.6,.36,1);
+    }
+    .stagger.visible > *:nth-child(1) { opacity:1; transform:none; transition-delay:0s; }
+    .stagger.visible > *:nth-child(2) { opacity:1; transform:none; transition-delay:0.08s; }
+    .stagger.visible > *:nth-child(3) { opacity:1; transform:none; transition-delay:0.16s; }
+    .stagger.visible > *:nth-child(4) { opacity:1; transform:none; transition-delay:0.24s; }
+    .stagger.visible > *:nth-child(5) { opacity:1; transform:none; transition-delay:0.32s; }
+    .stagger.visible > *:nth-child(6) { opacity:1; transform:none; transition-delay:0.40s; }
+
+    @media (max-width: 680px) {
+      .nav-links { display: none; }
+      section { padding: 4rem 1.25rem; }
+      .warum-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .leistung { grid-template-columns: 32px 1fr; }
+      .leistung-arrow { display: none; }
+      footer { flex-direction: column; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="logo">shiftF5</div>
+    <div class="nav-links">
+      <a href="#leistungen">Leistungen</a>
+      <a href="#warum">Über mich</a>
+      <a href="#kontakt" class="nav-cta">Kontakt</a>
+    </div>
+  </nav>
+
+  <section id="hero">
+    <div class="eyebrow">PowerPoint Design · shiftF5.de</div>
+    <h1>Präsentationen,<br><span class="soft">die überzeugen.</span></h1>
+    <p class="hero-sub">Professionelles PPT-Design für Unternehmen ohne eigene Marketingabteilung – passend zu Ihrer CI, einmalig erstellt, dauerhaft nutzbar.</p>
+    <div class="hero-actions">
+      <a href="#kontakt" class="btn-primary">Angebot anfragen</a>
+      <a href="#leistungen" class="btn-ghost">Leistungen ansehen</a>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <section id="problem">
+    <div class="section-inner">
+      <div class="fade-up">
+        <div class="section-eyebrow">Das Problem</div>
+        <h2>Gutes Branding.<br><span class="soft">Schlechte Folien.</span></h2>
+        <p class="body-text">Viele Unternehmen haben eine starke Website – aber ihre Präsentationen halten das Niveau nicht. Eine Agentur lohnt sich dafür nicht. Genau dafür gibt es shiftF5.</p>
+      </div>
+      <div class="tiles stagger">
+        <div class="tile"><div class="tile-marker"></div><h3>CI nicht konsistent</h3><p>Die Website sieht toll aus – die PowerPoint-Vorlage stammt aus 2015.</p></div>
+        <div class="tile"><div class="tile-marker"></div><h3>Agentur zu teuer</h3><p>Für eine einzige Präsentationsvorlage eine Agentur zu beauftragen lohnt sich nicht.</p></div>
+        <div class="tile"><div class="tile-marker"></div><h3>Intern keine Kapazität</h3><p>Niemand hat Zeit – und PPT-Design ist Spezialwissen, das kaum jemand hat.</p></div>
+        <div class="tile"><div class="tile-marker"></div><h3>Einmalig. Fertig.</h3><p>Kein Retainer, kein Abo. Ein Auftrag – ein Ergebnis, das Ihr Team selbst nutzen kann.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <section id="leistungen">
+    <div class="section-inner">
+      <div class="fade-up">
+        <div class="section-eyebrow">Leistungen</div>
+        <h2>Was ich<br><span class="soft">für Sie tue.</span></h2>
+      </div>
+      <div class="leistungen-list stagger">
+        <div class="leistung">
+          <div class="leistung-num">01</div>
+          <div><h3>CI-Template erstellen</h3><p>Eine vollständige PowerPoint-Vorlage auf Basis Ihrer bestehenden CI – Farben, Fonts, Logo, Folien-Layouts. Einmal erstellt, dauerhaft nutzbar für Ihr gesamtes Team.</p></div>
+          <div class="leistung-arrow">›</div>
+        </div>
+        <div class="leistung">
+          <div class="leistung-num">02</div>
+          <div><h3>Präsentation gestalten</h3><p>Sie liefern den Inhalt, ich die Optik. Pitches, Unternehmensvorstellungen, Angebotspräsentationen – professionell und konsistent umgesetzt.</p></div>
+          <div class="leistung-arrow">›</div>
+        </div>
+        <div class="leistung">
+          <div class="leistung-num">03</div>
+          <div><h3>Redesign & Überarbeitung</h3><p>Bestehende Präsentationen aufpolieren: Struktur verbessern, Design modernisieren, Corporate Identity anpassen.</p></div>
+          <div class="leistung-arrow">›</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <section id="warum">
+    <div class="section-inner">
+      <div class="fade-up">
+        <div class="section-eyebrow">Warum shiftF5</div>
+        <h2>Kein Overhead.<br><span class="soft">Nur Ergebnis.</span></h2>
+      </div>
+      <div class="warum-grid">
+        <ul class="check-list stagger">
+          <li>Direkte Zusammenarbeit – kein Projektmanager dazwischen</li>
+          <li>Kurze Abstimmungswege, schnelle Lieferung</li>
+          <li>Dateien, die Ihr Team selbst weiterpflegen kann</li>
+          <li>Keine laufenden Kosten, keine Agentur-Retainer</li>
+          <li>Erfahrung mit Unternehmen aus verschiedenen Branchen</li>
+          <li>Präsentationen, die zu Ihrer Website passen</li>
+        </ul>
+        <div class="quote-card fade-up">
+          <p>„Wir hatten eine starke Website – aber unsere Präsentationen haben das Niveau nicht gehalten. Nach der Zusammenarbeit passt endlich alles zusammen."</p>
+          <cite>— Kunde aus der Baubranche</cite>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="kontakt">
+    <div class="section-inner fade-up">
+      <div class="section-eyebrow">Kontakt</div>
+      <h2>Bereit für bessere<br><span class="soft">Präsentationen?</span></h2>
+      <p class="body-text">Schreiben Sie mir – ich melde mich innerhalb von 24 Stunden mit einem unverbindlichen Angebot.</p>
+      <a href="mailto:nils@shiftf5.de" class="kontakt-email">nils@shiftf5.de</a>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <section id="projekte">
+    <div class="section-inner fade-up">
+      <div class="section-eyebrow">Weitere Projekte</div>
+      <h2>Auch von mir.</h2>
+      <div class="projekt-card">
+        <div class="projekt-left">
+          <div class="projekt-icon">
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect width="32" height="32" rx="8" fill="#f5f5f7"/>
+              <path d="M8 16 Q16 8 24 16" stroke="#e8622a" stroke-width="2" stroke-linecap="round" fill="none"/>
+              <circle cx="12" cy="18" r="2.5" fill="#e8622a" opacity="0.5"/>
+              <circle cx="16" cy="14" r="2.5" fill="#e8622a"/>
+              <circle cx="21" cy="17" r="2.5" fill="#e8622a" opacity="0.5"/>
+            </svg>
+          </div>
+          <div>
+            <div class="projekt-name">Anzeigen2go</div>
+            <div class="projekt-claim">Finde Schnäppchen entlang deiner Route.</div>
+            <p class="projekt-desc">Eine iOS-App, die Kleinanzeigen nicht an einem festen Ort, sondern entlang deiner gesamten Fahrtroute findet – damit du nie wieder an einem guten Deal vorbeifährst.</p>
+          </div>
+        </div>
+        <a href="https://anzeigen2go.de" target="_blank" rel="noopener" class="projekt-link">
+          Mehr erfahren ›
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div>© 2025 shiftF5 · PowerPoint Design</div>
+    <div><a href="#">Impressum</a> &ensp;·&ensp; <a href="#">Datenschutz</a></div>
+  </footer>
+
+  <script>
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.fade-up, .stagger').forEach(el => io.observe(el));
+  </script>
+
+</body>
+</html>
